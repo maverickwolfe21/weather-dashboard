@@ -110,6 +110,7 @@ ul {
 }
 
 li {
+  cursor: pointer;
   width: 300px;
   background-color: lightgray;
   border-radius: 8px;
@@ -137,4 +138,13 @@ li {
   background-color: rgb(45, 46, 45);
   color: white;
   padding: 10px;
+}
+
+li:hover {
+  background-color: gray;
+  opacity: 70%;
+}
+
+#recent-searches-list > li {
+  width: 95%;
 }

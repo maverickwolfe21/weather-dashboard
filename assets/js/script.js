@@ -134,3 +134,10 @@ async function handleSearch(e, shouldPushToLs = true) {
 }
 
 formEl.addEventListener("submit", handleSearch);
+
+recentSearchesEl.addEventListener("click", function (e) {
+  if (e.target && e.target.matches("li")) {
+    textInput.value = e.target.innerText;
+    handleSearch(e, false);
+  }
+});
