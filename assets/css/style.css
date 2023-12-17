@@ -3,6 +3,8 @@
 }
 
 .header {
+  background: radial-gradient(274px at 7.4% 17.9%, rgb(82, 107, 248) 0.3%, rgb(167, 139, 252) 90.5%);
+  color: white;
   width: 100vw;
   padding: 10px;
   text-align: center;
@@ -68,7 +70,7 @@
 #location-name,
 #current-date {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 25px;
 }
 
 #weather-icon {
@@ -88,6 +90,7 @@
 }
 
 #dynamic-container {
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   width: 65vw;
