@@ -4,6 +4,16 @@ let detailsContainer = document.querySelector("#location-details");
 let recentSearchesEl = document.querySelector("#recent-searches-list");
 let recentSearchItem = document.querySelector("#recent-search-li");
 
+let locationNameEl = document.querySelector("#location-name");
+let currentDateEl = document.querySelector("#current-date");
+let weatherIconEl = document.querySelector("#weather-icon");
+let locationTempEl = document.querySelector("#location-temp");
+let locationWindEl = document.querySelector("#location-wind");
+let locationHumidityEl = document.querySelector("#location-humidity");
+
+let rightPlaceholderEl = document.querySelector("#right-placeholder");
+let rightContainer = document.querySelector("#right-container");
+
 async function handleSearch(e, shouldPushToLs = true) {
   e.preventDefault();
   if (textInput.value === "") {
@@ -28,6 +38,23 @@ async function handleSearch(e, shouldPushToLs = true) {
     const locationData2 = JSON.parse(result2);
     console.log(locationData2);
 
+    let usedDates = [];
+    let usedDateData = [];
+    for (let i = 0; i < locationData2.list.length; i++) {
+      const itemDate = new Date(locationData2.list[i].dt * 1000);
+      if (!usedDates.includes(itemDate.getDay()) && locationData2.list[i].weather[0].icon.includes("d")) {
+        usedDates.push(itemDate.getDay());
+        usedDateData.push(locationData2.list[i]);
+      }
+    }
+
+    locationNameEl.textContent = locationData2.city.name;
+    currentDateEl.textContent = ` (${new Date().toLocaleDateString()})`;
+    weatherIconEl.setAttribute("src", `https://openweathermap.org/img/wn/${usedDateData[0].weather[0].icon}@2x.png`);
+    locationTempEl.textContent = `Temp: ${usedDateData[0].main.temp} °F`;
+    locationWindEl.textContent = `Wind: ${usedDateData[0].wind.speed} MPH`;
+    locationHumidityEl.textContent = `Humidity: ${usedDateData[0].main.humidity} %`;
+
     if (shouldPushToLs) {
       let recentSearches = JSON.parse(localStorage.getItem("recentSearches"));
       if (recentSearches && recentSearches.length > 0) {
@@ -39,6 +66,9 @@ async function handleSearch(e, shouldPushToLs = true) {
         localStorage.setItem("recentSearches", JSON.stringify(newSearches));
       }
     }
+
+    rightPlaceholderEl.classList.add("hidden");
+    rightContainer.classList.remove("hidden");
   } catch (e) {
     //error message
     window.alert("no location found. please check spelling");
