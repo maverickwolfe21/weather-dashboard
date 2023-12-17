@@ -40,7 +40,7 @@ async function handleSearch(e, shouldPushToLs = true) {
 
   //fetch data
   try {
-    const url = `http://api.openweathermap.org/geo/1.0/direct?q=${textInput.value}&limit=5&appid=a1ae3427b7bdb878344cb4b25e0df8f9`;
+    const url = `https://api.openweathermap.org/geo/1.0/direct?q=${textInput.value}&limit=5&appid=a1ae3427b7bdb878344cb4b25e0df8f9`;
     const response = await fetch(url);
     const result = await response.text();
     let locationData = JSON.parse(result);
