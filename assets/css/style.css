@@ -4,8 +4,6 @@
 
 .header {
   width: 100vw;
-  /* background: radial-gradient(274px at 7.4% 17.9%, rgb(82, 107, 248) 0.3%, rgb(167, 139, 252) 90.5%); */
-  /* color: white; */
   padding: 10px;
   text-align: center;
 }
@@ -58,6 +56,15 @@
   margin-bottom: 10px;
 }
 
+.forecast-container {
+  margin-top: 15px;
+}
+
+.forecast-header {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
 #location-name,
 #current-date {
   font-weight: bold;
@@ -74,11 +81,10 @@
   display: flex;
   flex-direction: column;
   border: 2px solid black;
-  width: 65vw;
   gap: 10px;
   padding-left: 5px;
   padding-bottom: 5px;
-  padding-right: 0;
+  /* padding-right: 0; */
 }
 
 #dynamic-container {
@@ -104,7 +110,6 @@ ul {
 }
 
 li {
-  cursor: pointer;
   width: 300px;
   background-color: lightgray;
   border-radius: 8px;
@@ -114,11 +119,22 @@ li {
   text-align: center;
 }
 
-li:hover {
-  background-color: gray;
-  opacity: 70%;
+#forecast-items {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  line-height: 30px;
 }
 
-#recent-searches-list > li {
-  width: 95%;
+#forecast-item-container {
+  width: 150px;
+  display: flex;
+
+  flex-direction: column;
+  background-color: rgb(45, 46, 45);
+  color: white;
+  padding: 10px;
 }
