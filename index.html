@@ -5,5 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather Dashboard</title>
   </head>
-  <body></body>
+  <body>
+    <div class="left">
+      <h2 class="input-header">Search for a City:</h2>
+      <form class="custom-form" id="form">
+        <input name="location" id="location" type="text" autofocus="true" class="form-input" placeholder="San Diego" />
+        <button type="submit" class="custom-button">Search</button>
+      </form>
+
+      <ul id="recent-searches-list"></ul>
+    </div>
+  </body>
 </html>
