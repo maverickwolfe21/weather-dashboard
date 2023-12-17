@@ -27,6 +27,18 @@ async function handleSearch(e, shouldPushToLs = true) {
     const result2 = await response2.text();
     const locationData2 = JSON.parse(result2);
     console.log(locationData2);
+
+    if (shouldPushToLs) {
+      let recentSearches = JSON.parse(localStorage.getItem("recentSearches"));
+      if (recentSearches && recentSearches.length > 0) {
+        recentSearches.push(textInput.value);
+        localStorage.setItem("recentSearches", JSON.stringify(recentSearches));
+      } else {
+        let newSearches = [];
+        newSearches.push(textInput.value);
+        localStorage.setItem("recentSearches", JSON.stringify(newSearches));
+      }
+    }
   } catch (e) {
     //error message
     window.alert("no location found. please check spelling");
